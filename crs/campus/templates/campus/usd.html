@@ -37,9 +37,11 @@
                               {% csrf_token %}
                                <table>
                                     <tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" maxlength="10" minlength="10" required id="id_phone_number"  value="{{ y }}"></td></tr>
-                                    <tr><th><label>DOB</label></th><td><input type="date" maxlength="10" minlength="10" value="{{ db }}"></td></tr>
-                                    <tr><th><label>Father's name</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ fn }}"></td></tr>
-                                    <tr><th><label>Mother's Name</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ mn }}"></td></tr>
+                                    <tr><th><label>DOB</label></th><td><input type="date" maxlength="10" minlength="10" value="{{ db }}" name="dob"></td></tr>
+                                    <tr><th><label>Name</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ name }}" name="name"></td></tr>
+                                    <tr><th><label>Father's name</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ fn }}" name="fathers_name"></td></tr>
+                                    <tr><th><label>Mother's Name</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ mn }}" name="mothers_name"></td></tr>
+                                    <tr><th><label>Branch</label></th><td><input type="text" maxlength="10" minlength="10" value="{{b}}" name="branch"></td></tr>
                                     <tr><th><label>Gender</label></th>
                                         <td>
                                         <input type="radio" name="gender" value="female" >female
@@ -47,13 +49,14 @@
                                         <input type="radio" name="gender" value="others" >others
                                         </td>
                                     </tr>
-                                    <tr><th><label>Place</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ p }}"></td></tr>
-                                    <tr><th><label>Class 10 CGPA</label></th><td><input type="number" value="{{ c10 }}"></td></tr>
-                                    <tr><th><label>Class 12 Percentage</label></th><td><input type="number" value="{{ c12 }}" ></td></tr>
-                                    <tr><th><label>Internship</label></th><td><input type="text" value="yes/no" value="{{ i }}"></td></tr>
-                                    <tr><th><label>Certification count</label></th><td><input type="number" maxlength="10" minlength="10" value="{{ cc }}"></td></tr>
-                                    <tr><th><label>languages</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ l }}"></td></tr>
-                                    <tr><th><label>Email</label></th><td><input type="email" value="{{ e }}"></td></tr>
+                                    <tr><th><label>Place</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ p }}" name="place"></td></tr>
+                                    <tr><th><label>Class 10 CGPA</label></th><td><input type="number" value="{{ c10 }}" name="class_10_cgpa"></td></tr>
+                                    <tr><th><label>Class 12 Percentage</label></th><td><input type="number" value="{{ c12 }}" name="class_12_percentage"></td></tr>
+                                    <tr><th><label>Btech CGPA</label></th><td><input type="number" value="{{ cb }}" name="cgpa_Btech"></td></tr>
+                                    <tr><th><label>Internship</label></th><td><input type="text" value="yes/no" value="{{ i }}" name="internship"></td></tr>
+                                    <tr><th><label>Certification count</label></th><td><input type="number" maxlength="10" minlength="10" value="{{ cc }}" name="certifications_count"></td></tr>
+                                    <tr><th><label>languages</label></th><td><input type="text" maxlength="10" minlength="10" value="{{ l }}" name="languages"></td></tr>
+                                    <tr><th><label>Email</label></th><td><input type="email" value="{{ e }}" name="email"></td></tr>
                                     <tr><th><label for="id_sop" value="{{ y }}">Sop:</label></th><td><textarea rows="10" cols="50" name="sop"  maxlength="500" required id="id_sop" value="{{ x }}"></textarea></td></tr>
                                     
                                    <tr>

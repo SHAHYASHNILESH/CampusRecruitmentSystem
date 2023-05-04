@@ -89,8 +89,11 @@ def usd(request):
                 fn=request.POST.get('fathers_name')
                 mn=request.POST.get('mothers_name')
                 name=request.POST.get('name')
-
-                j=post[0]
+                print(fn)
+                if(len(post)>0):
+                  j=post[0]
+                else:
+                    j=stu_details()
                 j.sop =x
                 j.phone_number = y
                 j.dob=db
@@ -107,33 +110,40 @@ def usd(request):
                 j.fathers_name=fn
                 j.mothers_name=mn
                 j.name=name
+                j.username=stu
                 j.save()
                 return render(request, 'campus/stulog.html')
 
     else:
         stu = request.user.username
         post = stu_details.objects.filter(username=stu)
-        x = post[0].sop
-        x=str(x)
-        y = post[0].phone_number
-        print(x,y,post)
-        form=UsdForm()
-        db=post[0].dob
-        e=post[0].email
-        l=post[0].languages 
-        cc=post[0].certifications_count
-        i=post[0].internship
-        c12=post[0].class_12_percentage
-        c10=post[0].class_10_cgpa
-        b=post[0].branch
-        cb=post[0].cgpa_Btech
-        p=post[0].place
-        g=post[0].gender
-        fn=post[0].fathers_name
-        mn=post[0].mothers_name
-        name=post[0].name
-        context={'form': form,'x':x,'y':y,'db': db,"e":e,"l":l,"cc":cc,"i":i,"c12":c12,"c10":c10,"b":b,"cb":cb,"p":p,"g":g,"fn":fn,"mn":mn,"name":name}
-        return render(request, 'campus/usd.html',context)
+        if(len(post)>0):
+            x = post[0].sop
+            x=str(x)
+            y = post[0].phone_number
+            print(x,y,post)
+            form=UsdForm()
+            db=post[0].dob
+            e=post[0].email
+            l=post[0].languages 
+            cc=post[0].certifications_count
+            i=post[0].internship
+            c12=post[0].class_12_percentage
+            c10=post[0].class_10_cgpa
+            b=post[0].branch
+            cb=post[0].cgpa_Btech
+            p=post[0].place
+            g=post[0].gender
+            fn=post[0].fathers_name
+            mn=post[0].mothers_name
+            name=post[0].name
+            context={'form': form,'x':x,'y':y,'db': db,"e":e,"l":l,"cc":cc,"i":i,"c12":c12,"c10":c10,"b":b,"cb":cb,"p":p,"g":g,"fn":fn,"mn":mn,"name":name}
+            return render(request, 'campus/usd.html',context)
+        else:
+            form=UsdForm()
+            context={'form': form}
+            return render(request, 'campus/usd.html',context)
+
  else:
      return HttpResponse("<h1>u r not logged in</h1>")
 
@@ -142,7 +152,9 @@ def usd(request):
 def dispstu(request):
     if request.user.is_authenticated and request.user.groups.filter(name='student').exists():
         stu = request.user.username
+        print(stu)
         post = stu_details.objects.filter(username=stu)
+        print(post[0])
         form=dispstuForm()
         return render(request, 'campus/dispstu.html', {'form': form, 'post': post})
     else:
@@ -370,6 +382,7 @@ def applyjob(request):
         else:
             return render(request, 'campus/applyjob.html', {'y': y, 's': s})
       else:
+          print(y)
           return render(request, 'campus/applyjob.html', { 'y':y,'s': s})
     else:
         return HttpResponse("<h1>u r not logged in</h1>")
