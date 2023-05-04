@@ -356,6 +356,7 @@ def applyjob(request):
         print("hi")
         sal=request.POST.get("salary")
         bon=request.POST.get("years")
+        print(sal,bon)
         x = request.user.username
         b = stu_details.objects.filter(username=x)
         b = str(b[0].branch)
@@ -382,7 +383,7 @@ def applyjob(request):
         else:
             return render(request, 'campus/applyjob.html', {'y': y, 's': s})
       else:
-          print(y)
+          print("Hello",y)
           return render(request, 'campus/applyjob.html', { 'y':y,'s': s})
     else:
         return HttpResponse("<h1>u r not logged in</h1>")
