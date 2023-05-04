@@ -153,10 +153,10 @@ def dispstu(request):
     if request.user.is_authenticated and request.user.groups.filter(name='student').exists():
         stu = request.user.username
         print(stu)
-        post = stu_details.objects.filter(username=stu)
-        print(post[0])
+        posts = stu_details.objects.filter(username=stu)
+        print(posts)
         form=dispstuForm()
-        return render(request, 'campus/dispstu.html', {'form': form, 'post': post})
+        return render(request, 'campus/dispstu.html', {'form': form, 'posts': posts})
     else:
         return HttpResponse("<h1>u r not logged in</h1>")
 

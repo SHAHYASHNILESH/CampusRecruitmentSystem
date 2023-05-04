@@ -16,6 +16,7 @@
           <div class="jumbotron">
               <form method="get">
                   {% csrf_token %}
+                  {% for post in posts %}
                   <h1>PROFILE</h1>
                   <p>reg num:<b>{{ post.username }}</b></p>
                   <p>name :<b>{{ post.name}}</b></p>
@@ -32,8 +33,7 @@
                   <p>languages:<b>{{ post.languages}}</b></p>
                   <p>sop:<b>{{ post.sop}}</b></p>
                   <p>dob:<b>{{ post.dob}}</b></p>
-              
-              
+                  {% endfor %}
               </form>
                     
           </div>
