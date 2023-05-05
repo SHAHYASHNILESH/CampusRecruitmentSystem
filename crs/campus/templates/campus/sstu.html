@@ -21,10 +21,10 @@
               <form method="post">
                   {% csrf_token %}
                <table style="text-align: left;">
-                   <tr><th>JOB ID:<input type="text"  size="10" name="jobid" required  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
-                   <tr><th>10th cgpa:<input type="number" step="0.01" size="10" name="tenth" min="0" required max="10"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif" value="0"></th></tr>
-                   <tr><th>12th percentage:<input type="number" step="0.01" size="10" name="twth" min="0" required max="100" value="0"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
-                   <tr><th>Btech cgpa:<input type="number" step="0.01" size="10" name="btech" value="0" min="0" required max="10"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
+                   <!-- <tr><th>JOB ID:<input type="text"  size="10" name="jobid" required  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr> -->
+                   <tr><th>10th Percentage: <input type="number" step="0.01" size="10" name="tenth" min="0" required max="100"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif" value="0"></th></tr>
+                   <tr><th>12th Percentage: <input type="number" step="0.01" size="10" name="twth" min="0" required max="100" value="0"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
+                   <tr><th>Btech cgpa: <input type="number" step="0.01" size="10" name="btech" value="0" min="0" required max="10"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
              
                </table>
              <input type="submit" value="SEARCH">

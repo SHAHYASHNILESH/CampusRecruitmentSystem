@@ -19,8 +19,8 @@
       <form method="post">
            {% csrf_token %}
        
-            MINIMUM SALARY:<input type="number" size="10" name="salary"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif">
-            MAXIMUM BOND YEARS:<input type="number" size="10" name="years"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif">
+            MINIMUM SALARY:<input type="number" size="10" name="salary"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif" required>
+            MAXIMUM BOND YEARS:<input type="number" size="10" name="years"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif" required>
             <input type="submit" class="btn btn-primary" value="SEARCH">
         </form>
         <br>

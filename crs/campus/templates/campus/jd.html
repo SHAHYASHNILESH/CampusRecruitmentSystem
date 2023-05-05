@@ -45,11 +45,11 @@
              <table>
              <tr><th></th><td><input type="hidden" name="company_name"  size="36" maxlength="30" required id="id_company_name" value={{ y }}  ></td></tr>
          <tr><th></th><td><input type="hidden" name="username" maxlength="30" required id="id_username" value={{ x }} > </td></tr><br>
-         <tr><th><label for="id_job_id">Job id:</label></th><td><input type="text" name="job_id" maxlength="30" required id="id_job_id"><span class="helptext">*required</span></td></tr><br>
-         <tr><th><label for="id_designation">Designation:</label></th><td><input type="text" name="designation" maxlength="30" required id="id_designation"><span class="helptext">*required</span></td></tr><br>
-         <tr><th><label for="id_salary">Salary:</label></th><td><input type="number" name="salary" required id="id_salary"><span class="helptext">*required</span></td></tr><br>
-         <tr><th><label for="id_bond_years">Bond years:</label></th><td><input type="number" name="bond_years" required id="id_bond_years"><span class="helptext">*required</span></td></tr><br>
-         <tr><th><label for="id_information_technology">Information technology:</label></th><td><select name="information_technology" required id="id_information_technology">
+         <tr><th></th><td><input type="hidden" name="job_id" maxlength="30" required id="id_job_id" value="{{ z.job_id }}"><span class="helptext"></span></td></tr><br>
+         <tr><th><label for="id_designation">Designation:</label></th><td><input type="text" name="designation" maxlength="30" required id="id_designation" value="{{ z.designation }}"><span class="helptext"></span></td></tr><br>
+         <tr><th><label for="id_salary">Salary:</label></th><td><input type="number" name="salary" required id="id_salary" value="{{ z.salary }}"><span class="helptext"></span></td></tr><br>
+         <tr><th><label for="id_bond_years">Bond years:</label></th><td><input type="number" name="bond_years" required id="id_bond_years" value="{{ z.bond_years }}"><span class="helptext"></span></td></tr><br>
+         <tr><th><label for="id_information_technology">Information Technology:</label></th><td><select name="information_technology" required id="id_information_technology" value="{{ z.information_technology }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -57,7 +57,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_mech">Mech:</label></th><td><select name="mech" required id="id_mech">
+         <tr><th><label for="id_cse">Computer Engineering:</label></th><td><select name="cse" required id="id_cse" value="{{ z.cse }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -65,7 +65,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_civil">Civil:</label></th><td><select name="civil" required id="id_civil">
+         <tr><th><label for="id_mech">Mech:</label></th><td><select name="mech" required id="id_mech" value="{{ z.mech }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -73,7 +73,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_eee">Eee:</label></th><td><select name="eee" required id="id_eee">
+         <tr><th><label for="id_civil">Civil:</label></th><td><select name="civil" required id="id_civil" value="{{ z.civil }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -81,7 +81,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_ece">Ece:</label></th><td><select name="ece" required id="id_ece">
+         <tr><th><label for="id_eee">Electrical:</label></th><td><select name="eee" required id="id_eee" value="{{ z.eee }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -89,7 +89,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_chemical">Chemical:</label></th><td><select name="chemical" required id="id_chemical">
+         <tr><th><label for="id_ece">Electronics:</label></th><td><select name="ece" required id="id_ece" value="{{ z.ece }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -97,7 +97,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
-         <tr><th><label for="id_cse">Cse:</label></th><td><select name="cse" required id="id_cse">
+         <tr><th><label for="id_chemical">Chemical:</label></th><td><select name="chemical" required id="id_chemical" value="{{ z.chemical }}">
            <option value="" selected>---------</option>
          
            <option value="yes">yes</option>
@@ -105,6 +105,7 @@
            <option value="no">no</option>
          
          </select></td></tr>
+         
          
              <br></table>
          <button type="submit" style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif">Submit</button>

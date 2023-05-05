@@ -18,7 +18,7 @@
                   {% csrf_token %}
                  <table border="1px" style="text-align: center;border-collapse: collapse;background-color:rgb(176, 240, 195)" width="100%"   >
                      <tr >
-                         <th style="font-size:1.5rem;color: #16156d">job id</th>
+                         <!-- <th style="font-size:1.5rem;color: #16156d">job id</th> -->
                          <th style="font-size:1.5rem;color: #16156d">Designation</th>
                          <th style="font-size:1.5rem;color: #16156d">Salary</th>
                          <th style="font-size:1.5rem;color: #16156d">Bond_years</th>
@@ -29,13 +29,13 @@
                          <th style="font-size:1.5rem;color: #16156d">EEE</th>
                          <th style="font-size:1.5rem;color: #16156d">CSE</th>
                          <th style="font-size:1.5rem;color: #16156d">Chemical</th>
-             
+                         <th style="font-size:1.5rem;color: #16156d" colspan="2">Actions</th>
              
              
                      </tr>
                      {%  for i in y %}
                      <tr>
-                     <td>{{ i.job_id }}</td>
+                     <!-- <td>{{ i.job_id }}</td> -->
                      <td>{{ i.designation }}</td>
                      <td>{{ i.salary }}</td>
                      <td>{{ i.bond_years }}</td>
@@ -46,6 +46,9 @@
                      <td>{{ i.eee }}</td>
                      <td>{{ i.cse }}</td>
                      <td>{{ i.chemical }}</td>
+                     <td><a href='http://127.0.0.1:8000/company/company_login/jd/?id={{i.job_id}}' class="btn  d-inline-flex"><b style="color: #4BB543">Edit</b></a>
+                     </td>
+                      <td ><a href=" http://127.0.0.1:8000/company/company_login/deletevacan/?id={{i.job_id}} " class="btn  d-inline-flex"><b style=" color: #DC3545">Delete</b></a></td>
                      </tr>
                      {% endfor %}
                  </table>

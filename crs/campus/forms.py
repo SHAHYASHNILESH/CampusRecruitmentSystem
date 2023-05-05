@@ -57,4 +57,4 @@ class ccdForm(forms.Form):
 class jobposForm(forms.ModelForm):
     class Meta:
         model=job_pos
-        fields=('company_name','username','job_id','designation' ,'salary'  ,'bond_years','information_technology','mech', 'civil','eee',  'ece', 'chemical' ,'cse')
+        fields=('company_name','username','designation' ,'salary'  ,'bond_years','information_technology','mech', 'civil','eee',  'ece', 'chemical' ,'cse')

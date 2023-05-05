@@ -14,7 +14,8 @@
           <div class="jumbotron">
               <form method="post">
                   {% csrf_token %}
-                 Job Id:<input type="text" size="10" name="jobid" placeholder="Job id to delete" style="font-size: 1rem;"><br>
+                 <input type="hidden" size="10" name="jobid" placeholder="Job id to delete" style="font-size: 1rem;" value="{{id}}"><br>
+                 <p class="text-danger">Are You Sure? This action will permanently delete the vacancy</p>
                  <input type="submit" class="btn btn-warning" value="delete" style="font-size: 1rem;">
              </form>
           </div>

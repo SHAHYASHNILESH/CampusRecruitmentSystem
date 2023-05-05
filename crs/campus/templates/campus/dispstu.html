@@ -18,7 +18,7 @@
                   {% csrf_token %}
                   {% for post in posts %}
                   <h1>PROFILE</h1>
-                  <p>reg num:<b>{{ post.username }}</b></p>
+                  <p>Username:<b>{{ post.username }}</b></p>
                   <p>name :<b>{{ post.name}}</b></p>
                   <p>father's name:<b>{{ post.fathers_name}}</b></p>
                   <p>mother's name:<b>{{ post.mothers_name}}</b></p>

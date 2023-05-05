@@ -145,7 +145,7 @@ def usd(request):
             return render(request, 'campus/usd.html',context)
 
  else:
-     return HttpResponse("<h1>u r not logged in</h1>")
+     return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 
@@ -158,7 +158,7 @@ def dispstu(request):
         form=dispstuForm()
         return render(request, 'campus/dispstu.html', {'form': form, 'posts': posts})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 
@@ -243,7 +243,7 @@ def ccd(request):
         form=ccdForm()
         return render(request, 'campus/ccd.html', {'form': form,'x':x,'y':y,'z':z})
  else:
-     return HttpResponse("<h1>u r not logged in</h1>")
+     return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 
@@ -253,6 +253,7 @@ def jobpos(request):
             form = jobposForm(request.POST)
             if form.is_valid():
                     model_instance = form.save(commit=False)
+                    print
                     model_instance.save()
                     return render(request,'campus/comlog.html')
             else:
@@ -271,7 +272,7 @@ def jobpos(request):
 
             return render(request, 'campus/jobpos.html', {'form': form,'x':x,'y':y1})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 def jd(request):
     if request.user.is_authenticated and request.user.groups.filter(name='company').exists():
@@ -307,10 +308,13 @@ def jd(request):
             for i in y:
                 y1=y1+"_"+i
             y1=y1[1:len(y1)]
-
-            return render(request, 'campus/jd.html', {'x':x,'y':y1})
+            print("Request:", request.GET.get("id"))
+            jid = request.GET.get("id")
+            print("Jobid", jid)
+            z = job_pos.objects.filter(job_id=jid)
+            return render(request, 'campus/jd.html', {'x':x,'y':y1, 'z': z[0]})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 def deletevacan(request):
@@ -329,10 +333,10 @@ def deletevacan(request):
 
 
         else:
-
-            return render(request, 'campus/jobdelete.html')
+            jid = request.GET.get("id")
+            return render(request, 'campus/jobdelete.html', {'id': jid})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 def viewpos(request):
     if request.user.is_authenticated and request.user.groups.filter(name='company').exists():
@@ -344,7 +348,7 @@ def viewpos(request):
             s="no vacancies posted"
         return render(request, 'campus/viewpos.html',{'y':y,'s':s})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 
@@ -383,10 +387,28 @@ def applyjob(request):
         else:
             return render(request, 'campus/applyjob.html', {'y': y, 's': s})
       else:
-          print("Hello",y)
-          return render(request, 'campus/applyjob.html', { 'y':y,'s': s})
+        x = request.user.username
+        b = stu_details.objects.filter(username=x)
+        b = str(b[0].branch)
+        print(b)
+        if(b=="it"):
+         y = job_pos.objects.filter(information_technology="yes").order_by('salary')
+        if (b == "cse"):
+            y = job_pos.objects.filter(cse="yes").order_by('salary')
+        if (b == "me"):
+            y = job_pos.objects.filter(mech="yes").order_by('salary')
+        if (b == "ce"):
+            y = job_pos.objects.filter(civil="yes").order_by('salary')
+        if (b == "eee"):
+            y = job_pos.objects.filter(eee="yes").order_by('salary')
+        if (b == "ece"):
+            y = job_pos.objects.filter(ece="yes").order_by('salary')
+        if (b == "ch"):
+            y = job_pos.objects.filter(chemical="yes").order_by('salary')
+        print("Hello",y)
+        return render(request, 'campus/applyjob.html', { 'y':y,'s': s})
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 def apply(request,opt):
@@ -411,7 +433,7 @@ def apply(request,opt):
             return render(request,'campus/compdisp.html',{'post':x[0]})
 
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 def selectstu(request):
@@ -419,20 +441,20 @@ def selectstu(request):
     s=""
     if request.user.is_authenticated and request.user.groups.filter(name='company').exists():
         if request.method == "POST":
-             jobid=request.POST.get("jobid")
+             # jobid=request.POST.get("jobid")
              u=request.user.username
-             x=len(job_pos.objects.filter(job_id=jobid,username=u))
+             x=len(job_pos.objects.filter(username=u))
              if(x==0):
                  s="enter correct job id"
                  return render(request, 'campus/sstu.html', {'y': y,'s':s})
-             x=len(applied_jobs.objects.filter(job_id=jobid,company_id=u))
+             x=len(applied_jobs.objects.filter(company_id=u))
              if(x==0):
                 s = "sorry no one applied"
                 return render(request, 'campus/sstu.html', {'y': y, 's': s})
              tenth=request.POST.get("tenth")
              twth=request.POST.get("twth")
              btech=request.POST.get("btech")
-             x = applied_jobs.objects.filter(job_id=jobid,company_id=u).values('student_id')
+             x = applied_jobs.objects.filter(company_id=u).values('student_id')
              y=[]
              print(x)
              y=[]
@@ -451,10 +473,26 @@ def selectstu(request):
 
 
         else:
+          j = job_pos.objects.filter(username=request.user.username)
+          u=request.user.username
+          x = applied_jobs.objects.filter(company_id=u).values('student_id')
+          if(x==0):
+            s = "sorry no one applied"
+            return render(request, 'campus/sstu.html', {'y': y, 's': s})
+          y = []
+          for i in x:
+             b=stu_details.objects.filter(username=i['student_id'])
+             if(b.count()>0):
+               y.append(b)
+          # for i in range(len(j)):
+          #   y.append(j[i])
+          print(j.get())
+          print()
+ 
           return render(request, 'campus/sstu.html', {'y': y})
 
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 
 
 def stumail(request,opt):
@@ -477,8 +515,10 @@ def stumail(request,opt):
             print("hiiiii")
             x=stu_details.objects.filter(username=opt)
             print(x)
-            return render(request,'campus/showstudent.html',{'post':x[0]})
+            if(len(x) > 0):
+                return render(request,'campus/showstudent.html',{'post':x[0]})
+            return render(request,'campus/showstudent.html')
 
     else:
-        return HttpResponse("<h1>u r not logged in</h1>")
+        return HttpResponse('<h1>You are not logged in. <a href="http://127.0.0.1:8000/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem; color: #4BB543">Back</b></a></h1>')
 

@@ -61,7 +61,7 @@ class comp_details(models.Model):
         return self.username
 
 class job_pos(models.Model):
-    job_id=models.CharField(max_length=30, blank=False, help_text='*required',unique=True)
+    job_id=models.BigAutoField(primary_key=True)
     username = models.CharField(max_length=30, blank=False, help_text='*required')
     company_name = models.CharField(max_length=30, blank=False, help_text='*required')
     designation = models.CharField(max_length=30, blank=False, help_text='*required')
@@ -76,7 +76,7 @@ class job_pos(models.Model):
     cse= models.CharField(blank=False, choices=done, max_length=10)
 
     def __str__(self):
-        return self.job_id
+        return str(self.job_id)
 
 
 class applied_jobs(models.Model):
