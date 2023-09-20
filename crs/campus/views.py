@@ -486,7 +486,7 @@ def selectstu(request):
                y.append(b)
           # for i in range(len(j)):
           #   y.append(j[i])
-          print(j.get())
+          #print(j.get())
           print()
  
           return render(request, 'campus/sstu.html', {'y': y})
